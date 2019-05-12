@@ -46,7 +46,6 @@ namespace itertools{
 			}			
 	};
 	
-	
 	//static function range
 	template<typename T>
 	Range<T> range(T stat,T end){
