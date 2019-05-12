@@ -1,0 +1,49 @@
+
+namespace itertools{
+	/*
+	 *T1 and T2 iterables
+	 *I1 and I2 iterators
+	 *
+	 *for example:
+	 *chain(range('a','e'), string("hello"))
+	 *iterable_left is object type Range class.
+	 *iterable_right is object type String.
+	 *
+	 *iterator_left is object type Range:iterator.
+	 *iterator_left is object type String:iterator.
+	*/
+	template<typename T1,typename T2,typename I1,typename I2>
+	class Chain{
+		T1 iterable_left;
+		T2 iterable_right;
+				
+		public:
+			Chain(I1 left,I2 right):iterable_left(left),iterable_right(right){
+			}
+			
+			class iterator{
+				I1 iterator_left;
+				I2 iterator_right;
+				
+				public:
+					iterator( I1 right, I2 left) :iterator_left(right),iterator_right(left){
+					}
+					
+					bool operator!=(const iterator& other)const{
+						return iterator_left != other.iterator_left && iterator_right != other.iterator_right;
+					}
+					
+					bool operator==(const iterator& other)const{
+						return !(this!=other);
+					}
+					
+					
+			};
+			
+			
+			
+			
+	};
+	
+	
+}

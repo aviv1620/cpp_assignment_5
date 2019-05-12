@@ -10,25 +10,53 @@
 using namespace std;
 
 #include "range.hpp"
-/*#include "chain.hpp"
-#include "zip.hpp"
+#include "chain.hpp"
+/*#include "zip.hpp"
 #include "product.hpp"
 #include "powerset.hpp"*/
 using namespace itertools;
 
 int main() {
+	/*Range<int> r1(1,9);
+	Range<int> r2 = r1;
+	for (int i: r1)
+		cout << i;
+	
+	cout << endl;
+
+	Chain<Range<char>,string> c = chain(range('a','e'), string(" hello"));
+
+	Chain<Range<char>,string>::iterator i=c.begin();
+	i!=c.end();
+	++i;
+		
+	char val = *i;*/
+	
+	/*Chain<Range<char>,string>::iterator i=c.begin();
+	cout << (i!=c.end()) << " " << *i << endl;
+	++i;
+	cout << (i!=c.end()) << " " << *i << endl;
+	++i;
+	cout << (i!=c.end()) << " " << *i << endl;
+	++i;
+	cout << (i!=c.end()) << " " << *i << endl;
+	++i;
+	cout << (i!=c.end()) << " " << *i << endl;
+	++i;
+	cout << (i!=c.end()) << " " << *i << endl;
+	++i;
+		
+	char val = *i;
+	
+	for (char i: chain(range('a','e'), string(" hello")))
+		cout << i;
+	
+	*/
+	
 	cout << endl << endl << "Range of ints: " << endl;
 	
-	/*Range<int> r(5,9);
-	
-	Range<int>::iterator it = r.begin(); 
-	it!=r.end(); 
-	++it;*/
-	
-	
-	//Stk<string>  strStk;
 	for (int i: range(-9,9))
-		cout << i;    // 5678
+		cout << i;    // -9 to 8
 	cout << endl << endl << "Range of doubles: " << endl;
 	for (double i: range(5.1,9.1))
 		cout << i << " ";    // 5.1 6.1 7.1 8.1
@@ -42,14 +70,14 @@ int main() {
 	for (char i: string("hello"))
 		cout << i << " ";    // prints h e l l o 
 
-	/*cout << endl << endl << "Chain of two ranges: " << endl;
+	cout << endl << endl << "Chain of two ranges: " << endl;
 	for (int i: chain(range(1,4), range(5,8)))
 		cout << i;    // prints 123567
 	cout << endl << endl << "Chain of a range and a string: " << endl;
 	for (char i: chain(range('a','e'), string("hello")))
 		cout << i;    // abcdhello
 
-	cout << endl << endl << "Zip a range of ints and a string (must be of the same size)" << endl;
+	/*cout << endl << endl << "Zip a range of ints and a string (must be of the same size)" << endl;
 	for (auto pair: zip(range(1,6), string("hello")))
 		cout << pair << "  ";    // 1,h  2,e  3,l  4,l  5,o
 	cout << endl << endl << "Zip of zips" << endl;
