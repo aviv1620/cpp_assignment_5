@@ -3,12 +3,12 @@
 namespace itertools{
 	
 	template<typename T>
-	class Range{
+	class range{
 		T _start;
 		T _end;
 		
 		public:
-			Range(T start,T end):_start(start),_end(end){
+			range(T start,T end):_start(start),_end(end){
 			}
 			
 			class iterator{
@@ -47,10 +47,6 @@ namespace itertools{
 			}			
 	};
 	
-	//static function range
-	template<typename T>
-	Range<T> range(T stat,T end){
-		return Range(stat,end);
-	}
+
 	
 }

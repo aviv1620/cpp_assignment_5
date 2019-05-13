@@ -8,12 +8,12 @@ namespace itertools{
 
 
 	template<typename T1,typename T2>
-	class Zip{
+	class zip{
 		T1 iterable_left;
 		T2 iterable_right;
 				
 		public:
-			Zip(T1 left,T2 right):iterable_left(left),iterable_right(right){
+			zip(T1 left,T2 right):iterable_left(left),iterable_right(right){
 			}
 			
 			
@@ -71,9 +71,6 @@ namespace itertools{
 		return os;
 	}
 	
-	template<typename T1,typename T2>
-	Zip<T1,T2> zip(T1 left,T2 right){
-		return Zip(left,right);
-	}
+
 		
 }

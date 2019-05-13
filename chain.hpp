@@ -2,12 +2,12 @@
 namespace itertools{
 
 	template<typename T1,typename T2>
-	class Chain{
+	class chain{
 		T1 iterable_left;
 		T2 iterable_right;
 				
 		public:
-			Chain(T1 left,T2 right):iterable_left(left),iterable_right(right){
+			chain(T1 left,T2 right):iterable_left(left),iterable_right(right){
 			}
 			
 			
@@ -73,11 +73,7 @@ namespace itertools{
 			
 	};
 	
-	
-	template<typename T1,typename T2>
-	Chain<T1,T2> chain(T1 left,T2 right){
-		return Chain(left,right);
-	}
+
 	
 	
 }
