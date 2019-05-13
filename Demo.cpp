@@ -16,44 +16,10 @@ using namespace std;
 #include "powerset.hpp"*/
 using namespace itertools;
 
+
+
 int main() {
-	
-	/*Range<int> r1(1,9);
-	Range<int> r2 = r1;
-	for (int i: r1)
-		cout << i;
-	
-	cout << endl;
 
-	Chain<Range<char>,string> c = chain(range('a','e'), string(" hello"));
-
-	Chain<Range<char>,string>::iterator i=c.begin();
-	i!=c.end();
-	++i;
-		
-	char val = *i;*/
-	
-	/*Chain<Range<char>,string>::iterator i=c.begin();
-	cout << (i!=c.end()) << " " << *i << endl;
-	++i;
-	cout << (i!=c.end()) << " " << *i << endl;
-	++i;
-	cout << (i!=c.end()) << " " << *i << endl;
-	++i;
-	cout << (i!=c.end()) << " " << *i << endl;
-	++i;
-	cout << (i!=c.end()) << " " << *i << endl;
-	++i;
-	cout << (i!=c.end()) << " " << *i << endl;
-	++i;
-		
-	char val = *i;
-	
-	for (char i: chain(range('a','e'), string(" hello")))
-		cout << i;
-	
-	*/
-	
 	cout << endl << endl << "Range of ints: " << endl;
 	
 	for (int i: range(-9,9))
@@ -81,14 +47,17 @@ int main() {
 	cout << endl << endl << "Zip a range of ints and a string (must be of the same size)" << endl;
 	for (auto pair: zip(range(1,6), string("hello")))
 		cout << pair << "  ";    // 1,h  2,e  3,l  4,l  5,o
-	cout << endl << endl << "Zip of zips" << endl;
+		
+	/*cout << endl << endl << "Zip of zips" << endl;
 	for (auto pair: zip(zip(range(1,4), string("xyz")),zip(string("abc"),range(6,9))))
 		cout << pair << "  ";    // 1,x,a,6  2,y,b,7  3,z,c,8
+		
 
-	/*cout << endl << endl << "Cartesian product of a range of ints and a string (can be of different sizes)" << endl;
+	cout << endl << endl << "Cartesian product of a range of ints and a string (can be of different sizes)" << endl;
 	for (auto pair: product(range(1,4), string("hello")))
 		cout << pair << "  ";    // 1,h  1,e  1,l  1,l  1,o  2,h  2,e  2,l  2,l  2,o  3,h  3,e  3,l  3,l  3,o
-
+	
+	
 	cout << endl << endl << "Power-set of range of ints " << endl;
 	for (auto subset: powerset(range(1,4)))
 		cout << subset;  // {}{1}{2}{1,2}{3}{1,3}{2,3}{1,2,3}

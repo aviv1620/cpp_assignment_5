@@ -35,6 +35,7 @@ namespace itertools{
 				T& operator*() {
 					return _value;
 				}
+				
 			};//end iterator class.
 			
 			iterator begin() {

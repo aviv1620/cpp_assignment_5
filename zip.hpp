@@ -22,7 +22,7 @@ namespace itertools{
 				typename T2::iterator iterator_right;
 				
 				public:
-					iterator(typename T1::iterator left,typename T2::iterator right,typename T1::iterator left_end,bool is_left)
+					iterator(typename T1::iterator left,typename T2::iterator right)
 					:iterator_left(left),iterator_right(right){
 						
 					}
@@ -42,11 +42,9 @@ namespace itertools{
 						return *this;
 					}
 					
-					string operator*() {
-						string s = to_string(*iterator_left);
-						s += ",";
-						s += to_string(*iterator_right);
-						return s;
+					auto operator*() {//fixme			
+						return make_pair(*iterator_left,*iterator_right);
+
 					}
 					
 					
@@ -55,13 +53,11 @@ namespace itertools{
 			};
 			
 			iterator begin() {
-				return iterator(iterable_left.begin(),iterable_right.begin()
-				,iterable_left.end(),true);
+				return iterator(iterable_left.begin(),iterable_right.begin());
 			}
 			
 			iterator end() {
-				return iterator(iterable_left.end(),iterable_right.end(),
-				iterable_left.end(),false);
+				return iterator(iterable_left.end(),iterable_right.end());
 			}
 			
 	
@@ -69,7 +65,11 @@ namespace itertools{
 	};
 	
 
-	
+	template<typename T1,typename T2>
+	ostream& operator<< (ostream& os, const pair<T1,T2>& p) {
+		os << p.first << "," << p.second;
+		return os;
+	}
 	
 	template<typename T1,typename T2>
 	Zip<T1,T2> zip(T1 left,T2 right){
