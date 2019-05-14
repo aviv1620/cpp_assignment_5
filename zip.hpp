@@ -8,11 +8,18 @@ namespace itertools{
 
 	template<typename T1,typename T2>
 	class zip{
-		T1 iterable_left;
-		T2 iterable_right;
+		typename T1::iterator iterator_left_begin;
+		typename T2::iterator iterator_right_begin;
+		typename T1::iterator iterator_left_end;
+		typename T2::iterator iterator_right_end;
 				
 		public:
-			zip(T1 left,T2 right):iterable_left(left),iterable_right(right){
+			zip(T1 left,T2 right):
+			iterator_left_begin( left.begin() ),
+			iterator_right_begin( right.begin() ),
+			iterator_left_end( left.end() ),
+			iterator_right_end( right.end() )
+			{
 			}
 			
 			
@@ -51,12 +58,12 @@ namespace itertools{
 					
 			};
 			
-			iterator begin() {
-				return iterator(iterable_left.begin(),iterable_right.begin());
+			iterator begin() const {
+				return iterator(iterator_left_begin,iterator_right_begin);
 			}
 			
-			iterator end() {
-				return iterator(iterable_left.end(),iterable_right.end());
+			iterator end() const {
+				return iterator(iterator_left_end,iterator_right_end);
 			}
 			
 	

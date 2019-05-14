@@ -8,11 +8,19 @@ namespace itertools{
 
 	template<typename T1,typename T2>
 	class product{
-		T1 iterable_left;
-		T2 iterable_right;
+		typename T1::iterator iterator_left_begin;
+		typename T2::iterator iterator_right_begin;
+		typename T1::iterator iterator_left_end;
+		typename T2::iterator iterator_right_end;
+
 				
 		public:
-			product(T1 left,T2 right):iterable_left(left),iterable_right(right){
+			product(T1 left,T2 right):
+			iterator_left_begin( left.begin() ),
+			iterator_right_begin( right.begin() ),
+			iterator_left_end( left.end() ),
+			iterator_right_end( right.end() )
+			{
 			}
 						
 			class iterator{
@@ -54,18 +62,15 @@ namespace itertools{
 					
 						return make_pair(*iterator_left,*iterator_right);
 					}
-					
-					
-					
-					
+	
 			};
 			
-			iterator begin() {
-				return iterator(iterable_left.begin(),iterable_right.begin(),iterable_left.end(),iterable_right.end(),iterable_right.begin());
+			iterator begin() const {
+				return iterator(iterator_left_begin,iterator_right_begin,iterator_left_end,iterator_right_end,iterator_right_begin);
 			}
 			
-			iterator end() {
-				return iterator(iterable_left.end(),iterable_right.end(),iterable_left.end(),iterable_right.end(),iterable_right.begin());
+			iterator end() const{
+				return iterator(iterator_left_end,iterator_right_end,iterator_left_end,iterator_right_end,iterator_right_begin);
 			}
 			
 	

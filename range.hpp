@@ -38,11 +38,11 @@ namespace itertools{
 				
 			};//end iterator class.
 			
-			iterator begin() {
+			iterator begin() const{
 				return iterator{_start};
 			}
 			
-			iterator end() {
+			iterator end() const{
 				return iterator{_end};
 			}			
 	};

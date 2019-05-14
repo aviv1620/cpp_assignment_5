@@ -4,10 +4,14 @@ namespace itertools{
 	
 	template<typename T>
 	class powerset{
-		T _iterable;
+		typename T::iterator iterator_begin;
+		typename T::iterator iterator_end;				
 		
 		public:
-			powerset(T it):_iterable(it){
+			powerset(T it):
+			iterator_begin( it.begin() ),
+			iterator_end( it.end() )
+			{
 			}
 			
 			class iterator{
@@ -37,12 +41,12 @@ namespace itertools{
 				
 			};//end iterator class.
 			
-			iterator begin() {
-				return iterator(_iterable.begin());
+			iterator begin() const {
+				return iterator(iterator_begin);
 			}
 			
-			iterator end() {
-				return iterator(_iterable.end());
+			iterator end() const {
+				return iterator(iterator_end);
 			}			
 	};
 	

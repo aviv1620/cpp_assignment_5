@@ -3,11 +3,18 @@ namespace itertools{
 
 	template<typename T1,typename T2>
 	class chain{
-		T1 iterable_left;
-		T2 iterable_right;
-				
+	
+		typename T1::iterator iterator_left;
+		typename T2::iterator iterator_right;
+		typename T1::iterator iterator_left_end;
+		typename T2::iterator iterator_right_end;
+		
 		public:
-			chain(T1 left,T2 right):iterable_left(left),iterable_right(right){
+			chain(T1 left,T2 right):
+			iterator_left( left.begin() ),
+			iterator_right( right.begin() ),
+			iterator_left_end( left.end() ),
+			iterator_right_end( right.end() ){
 			}
 			
 			
@@ -58,14 +65,13 @@ namespace itertools{
 					
 			};
 			
-			iterator begin() {
-				return iterator(iterable_left.begin(),iterable_right.begin()
-				,iterable_left.end(),true);
+			iterator begin() const{
+				return iterator(iterator_left,iterator_right,iterator_left_end,true);
 			}
 			
-			iterator end() {
-				return iterator(iterable_left.end(),iterable_right.end(),
-				iterable_left.end(),false);
+			iterator end() const{
+				return iterator(iterator_left_end,iterator_right_end,
+				iterator_left_end,false);
 			}
 			
 			
