@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+
 
 using namespace std;
 
@@ -42,7 +41,7 @@ namespace itertools{
 						return *this;
 					}
 					
-					auto operator*() {//fixme			
+					auto operator*() {			
 						return make_pair(*iterator_left,*iterator_right);
 
 					}
