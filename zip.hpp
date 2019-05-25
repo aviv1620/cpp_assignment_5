@@ -77,6 +77,12 @@ namespace itertools{
 		return os;
 	}
 	
+	template<typename T1,typename T2>
+	ostream& operator<< (ostream& os, const zip<T1,T2>& zi) {
+		os << "test";
+		return os;
+	}
+	
 
 		
 }

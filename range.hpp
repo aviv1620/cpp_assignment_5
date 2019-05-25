@@ -1,4 +1,4 @@
-
+#include <iostream>
 
 namespace itertools{
 	
@@ -9,6 +9,12 @@ namespace itertools{
 		
 		public:
 			range(T start,T end):_start(start),_end(end){
+				if( _start >= _end){
+					cout << "need throw" << endl;
+					//throw string(" range must start < end ");
+					//throw not work
+					_end = _start + 1;
+				}
 			}
 			
 			class iterator{
@@ -46,6 +52,13 @@ namespace itertools{
 				return iterator{_end};
 			}			
 	};
+	
+	
+	template<typename T>
+	ostream& operator<< (ostream& os, const range<T>& r) {
+		os << "test";
+		return os;
+	}
 	
 
 	

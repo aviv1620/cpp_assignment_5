@@ -39,7 +39,7 @@ namespace itertools{
 					}
 					
 					bool operator==(const iterator& other)const{
-						return !(this!=other);
+						return !(  iterator_left != other.iterator_left || iterator_right != other.iterator_right );
 					}
 					
 					iterator& operator++() {
@@ -55,7 +55,7 @@ namespace itertools{
 						return *this;
 					}
 					
-					auto& operator*() {
+					const auto& operator*(){
 						if(isLeft)
 							return *iterator_left;
 						else
@@ -78,6 +78,12 @@ namespace itertools{
 			
 			
 	};
+	
+	template<typename T1,typename T2>
+	ostream& operator<< (ostream& os, const chain<T1,T2>& ch) {
+		os << "test";
+		return os;
+	}
 	
 
 	

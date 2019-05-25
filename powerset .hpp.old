@@ -4,44 +4,49 @@ namespace itertools{
 	
 	template<typename T>
 	class powerset{
-		T iterable;
+		typename T::iterator iterator_begin;
+		typename T::iterator iterator_end;				
+		
 		public:
 			powerset(T it):
-			iterable( it ){
+			iterator_begin( it.begin() ),
+			iterator_end( it.end() )
+			{
 			}
 			
 			class iterator{
-				T iterable;
+				typename T::iterator _iterator;
 		
 				public:
-				iterator(T it) 
-				:iterable(it){
+				iterator(typename T::iterator iter) 
+				:_iterator(iter){
 				}
 				
 				bool operator!=(const iterator& other)const{
-					return false;
+					return _iterator != other._iterator;
 				}
 				
 				bool operator==(const iterator& other)const{
-					return true;
+					return _iterator == other._iterator;
 				}
 				
 				iterator& operator++() {
+					++_iterator;
 					return *this;
 				}
 				
 				auto& operator*() {
-					return iterable;
+					return *_iterator;
 				}
 				
 			};//end iterator class.
 			
 			iterator begin() const {
-				return iterator(iterable);
+				return iterator(iterator_begin);
 			}
 			
 			iterator end() const {
-				return iterator(iterable);
+				return iterator(iterator_end);
 			}			
 	};
 	

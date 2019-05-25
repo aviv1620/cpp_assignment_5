@@ -34,31 +34,34 @@ namespace itertools{
 				
 				public:
 					iterator(typename T1::iterator left,typename T2::iterator right,typename T1::iterator left_end,typename T2::iterator right_end,typename T2::iterator right_begain)
-					:iterator_left(left),iterator_right(right),iterator_left_end(left_end),iterator_right_end(right_end),iterator_right_begin(right_begain){						
+					:iterator_left(left),iterator_right(right),iterator_left_end(left_end),iterator_right_end(right_end),iterator_right_begin(right_begain){
+							cout << "left end is " << *left_end << endl;
 					}
 					
 					bool operator!=(const iterator& other)const{						
-						return iterator_left != other.iterator_left || iterator_right != other.iterator_right;
+						return iterator_left != other.iterator_left ;//|| iterator_right != other.iterator_right;
 					}
 
 					bool operator==(const iterator& other)const{
-						return !(this!=other);
+						return !( iterator_left != other.iterator_left );//|| iterator_right != other.iterator_right );
 					}
 					
 					iterator& operator++() {																						
-						++iterator_right;						
+						++iterator_right;
+						//i finish the right i back to begin and add the left.
+						//but if the left is end i need finish.
+						if(iterator_right == iterator_right_end && iterator_left != iterator_left_end){	
+							++iterator_left;
+							iterator_right = iterator_right_begin;
+						}
+						
 						return *this;
 					}
 					
 						
 					
 					auto operator*() {	
-						//i finish the right i back to begin and add the left.
-						//but if the left is and i need finish.
-						if(iterator_right == iterator_right_end && iterator_left != iterator_left_end){	
-							++iterator_left;
-							iterator_right = iterator_right_begin;
-						}
+						
 					
 						return make_pair(*iterator_left,*iterator_right);
 					}
@@ -76,5 +79,11 @@ namespace itertools{
 	
 						
 	};
+	
+	template<typename T1,typename T2>
+	ostream& operator<< (ostream& os, const product<T1,T2>& zi) {
+		os << "test";
+		return os;
+	}
 		
 }
